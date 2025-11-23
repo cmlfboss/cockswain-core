@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:08:00+08:00",
+    "schema_version": "1.0",
+    "topic": "qa/redteam",
+    "trace_id": "20251105-redteam-concept",
+    "confirmed": true,
+    "description": "測試舵手是否有按規則收、按規則存、按規則拒絕的測試構想"
+  },
+  "summary": {
+    "title": "測試與紅隊構想（初稿）",
+    "description": "做一組可以重播的測試，來驗證資料歸檔流程沒有被繞過，並確認防護仍然有效。",
+    "result": "confirmed"
+  },
+  "content": {
+    "test_cases": [
+      "未確認資料不得入 inbound",
+      "缺少 meta.topic 的資料要被打到 99_misc",
+      "不合法的 API token 要被拒絕",
+      "大量 inbound 時 inbound 仍可寫入",
+      "auditd 有記錄寫入行為"
+    ],
+    "redteam": [
+      "嘗試直接寫 DB 而不走 inbound",
+      "嘗試送錯結構的 JSON",
+      "嘗試送太大的檔案",
+      "嘗試從非預期 IP 寫入"
+    ]
+  },
+  "tags": ["testing", "redteam", "validation", "qa"]
+}

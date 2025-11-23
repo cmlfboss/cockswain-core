@@ -1,0 +1,20 @@
+{
+  "text": "請整理母機目前的建設進度，並標註哪些要回家後才能執行。",
+  "source": "dialog",
+  "ts": "2025-11-08T03:00:00+08:00",
+  "l1_intent": "task",
+  "pipeline_notes": [
+    "processed by pipelines.l2_common for helmsman_alpha",
+    "processed by pipelines.l3_knowledge for helmsman_alpha",
+    "processed by pipelines.l4_domain for helmsman_alpha",
+    "processed by pipelines.l5_judgement for helmsman_alpha",
+    "processed by pipelines.l6_correction for helmsman_alpha",
+    "processed by pipelines.l7_cognition for helmsman_alpha",
+    "processed by pipelines.l2_common for helmsman_beta",
+    "processed by pipelines.l3_knowledge for helmsman_beta",
+    "processed by pipelines.l4_domain for helmsman_beta",
+    "processed by pipelines.l5_judgement for helmsman_beta",
+    "processed by pipelines.l6_correction for helmsman_beta",
+    "processed by pipelines.l7_cognition for helmsman_beta"
+  ]
+}

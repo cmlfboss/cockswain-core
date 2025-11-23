@@ -1,0 +1,7 @@
+{
+  "user_id": "demo_user",
+  "source": "local_butler",
+  "mode": "real",
+  "allowed_root": "/tmp/v3_test",
+  "natural_language": "請把 /tmp/v3_test_in 裡的 .txt 檔搬到 /tmp/v3_test_out"
+}

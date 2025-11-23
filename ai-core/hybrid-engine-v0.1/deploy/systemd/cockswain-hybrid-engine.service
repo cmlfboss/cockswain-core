@@ -1,0 +1,17 @@
+[Unit]
+Description=Cockswain Hybrid Engine v0.1
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=cocksmain
+WorkingDirectory=/srv/cockswain-core/ai-core/hybrid-engine
+EnvironmentFile=/srv/cockswain-core/ai-core/hybrid-engine/.env
+ExecStart=/srv/cockswain-core/ai-core/hybrid-engine/.venv/bin/hybrid-engine
+Restart=always
+RestartSec=5
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,23 @@
+# 舵手自我進化 v1.0 設定檔
+
+# 每次演化週期會掃描的資料來源
+sources:
+  # 目前先掃對話紀錄 / 任務紀錄的壓縮檔或 log
+  dialog_summary_path: "/srv/cockswain-core/logs/dialog_summary.jsonl"
+  task_summary_path: "/srv/cockswain-core/logs/task_summary.jsonl"
+
+# 認知循環強度設定（先保守）
+cognitive_loop:
+  max_items_per_cycle: 50      # 每輪最多處理多少條事件
+  min_importance_score: 0.3    # 重要性門檻（0~1），太低就忽略
+  adjustment_step: 0.05        # 行為微調步幅（先小一點）
+
+# 自主任務建議設定
+self_initiating:
+  enable_suggestions: true
+  max_suggested_tasks_per_day: 10
+  default_priority: 3          # 1=最高, 5=最低
+
+# Evolution Log 記錄相關
+evolution_log:
+  max_daily_length: 2000       # 單日詳細描述最大字元數（避免爆掉）

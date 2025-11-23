@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "dataset_code": "kc_recent_api_changes",
+    "name": "最近 API 變更紀錄",
+    "description": "從 kc_api_changes 擷取最近 N 筆變更，提供給知識處理中心做動態指向。",
+    "source_table": "kc_api_changes",
+    "generated_at": "2025-11-22T06:34:49.598509",
+    "row_count": 1
+  },
+  "rows": [
+    {
+      "id": 1,
+      "source_id": "meilisearch_local",
+      "prev_version": null,
+      "new_version": "1.11.0",
+      "change_type": "unknown",
+      "detected_at": "2025-11-18T19:29:42",
+      "raw_diff": "{\"raw\": {\"commitSha\": \"3753f87fd89ed57045c2e05172a4139011579ed6\", \"commitDate\": \"2024-10-21T15:08:49.000000000Z\", \"pkgVersion\": \"1.11.0\"}, \"new_version\": \"1.11.0\", \"prev_version\": null}",
+      "note": "auto-detected by collect_api_changes",
+      "created_at": "2025-11-19T03:29:42"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+收集 /srv/cockswain-core/logs 內所有 .log 檔，統一整理成一個彙總檔案
+- 把所有 .log 檔按檔名排序
+- 每個檔案前面插入分隔線與檔名
+- 寫到 workspace/logs/combined_logs.txt

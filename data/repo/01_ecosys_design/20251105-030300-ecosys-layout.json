@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:03:00+08:00",
+    "schema_version": "1.0",
+    "topic": "ecosys/layout",
+    "trace_id": "20251105-eco-layout-v1",
+    "confirmed": true,
+    "description": "母機內部資料要如何依生態分門別類的對應表"
+  },
+  "summary": {
+    "title": "生態資料佈置結構（初版）",
+    "description": "將所有 inbound 資料依用途分為六大類：生態設計、節點建設、舵手能力、鏈與幣、遊戲與公會、其他。",
+    "result": "confirmed"
+  },
+  "content": {
+    "repo_map": {
+      "01_ecosys_design": "生態開發需求與架構設計",
+      "02_node_build_logs": "節點建設過程與問題處理",
+      "03_helmsman_capability": "舵手與智靈能力建構、規範",
+      "04_chain_and_token": "公鏈、雙幣、治理、白名單策略",
+      "05_game_and_guild": "遊戲、公會、模擬、測試",
+      "99_misc": "暫時無法分類的資料"
+    },
+    "placement_rule": "優先看 meta.topic，其次看 normalized.category，找不到就放 99_misc",
+    "example": [
+      "topic = ecosys/mother/setup → 02_node_build_logs",
+      "topic = chain/tokenomics → 04_chain_and_token"
+    ]
+  },
+  "tags": ["layout", "repo-map", "classification", "ecosys"]
+}

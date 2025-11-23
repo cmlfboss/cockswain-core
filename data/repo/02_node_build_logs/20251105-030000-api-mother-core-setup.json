@@ -1,0 +1,64 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:00:00+08:00",
+    "schema_version": "1.0",
+    "topic": "ecosys/mother/setup",
+    "trace_id": "20251105-mother-core-setup-v1",
+    "confirmed": true,
+    "description": "母機啟動、防護初始、cockswain-core 容器部署、後續歸檔流程設計"
+  },
+  "summary": {
+    "title": "母機核心部署與資料歸檔規則確立",
+    "description": "完成母機掛載與防護 (UFW, Fail2Ban, auditd, auto-update)；完成 docker/mysql/nginx 部署；完成 cockswain-core 容器啟動並可由 9090 回應；建立三層資料夾 inbound/repo/archive；確認之後所有經由舵手 API 接收的資料都要先落地再依生態資料佈置結構整理，最後才入資料庫。",
+    "result": "confirmed"
+  },
+  "content": {
+    "boot_and_mount": {
+      "boot_mode": "UEFI",
+      "partitions": ["/", "/home", "/boot/efi", "swap"],
+      "state": "stable"
+    },
+    "security_layer": {
+      "ufw": "enabled with 22,80,443; 3306 local-only",
+      "fail2ban": ["sshd", "mysqld-auth", "nginx-http-auth"],
+      "auditd": "enabled",
+      "auto_update": "enabled"
+    },
+    "services": {
+      "docker": "running",
+      "mysql": "running local-only",
+      "nginx": "running",
+      "cockswain_core": "running on 9090"
+    },
+    "archiving_policy": {
+      "rule": "no direct DB write from external API",
+      "steps": [
+        "1. API receive",
+        "2. save to /srv/cockswain-core/data/inbound/",
+        "3. normalize by eco-data-layout",
+        "4. move to /srv/cockswain-core/data/repo/",
+        "5. ingest to DB (delayed)"
+      ]
+    },
+    "future_plan": {
+      "api_must_open": true,
+      "open_source_llm": "to be added later to reduce external api cost",
+      "phases": [
+        "Phase 1: API inbound only",
+        "Phase 2: add local LLM to process",
+        "Phase 3: full autonomous ingest/index"
+      ]
+    }
+  },
+  "tags": [
+    "mother",
+    "init",
+    "security",
+    "docker",
+    "data-pipeline",
+    "archiving",
+    "api-inbound"
+  ]
+}

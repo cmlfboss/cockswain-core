@@ -1,0 +1,6 @@
+{
+  "name": "cockswain-hybrid",
+  "version": "1.0",
+  "log_dir": "/srv/cockswain-core/logs",
+  "health_path": "/srv/cockswain-core/health"
+}

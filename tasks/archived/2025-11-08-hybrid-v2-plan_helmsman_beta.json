@@ -1,0 +1,55 @@
+{
+  "text": "混合測試板 v2.0 任務規劃：讓舵手具備自我觀察、自我歸類、自我學習的循環。",
+  "source": "system",
+  "ts": "2025-11-08T05:45:00+08:00",
+  "meta": {
+    "version": "2.0",
+    "author": "舵手系統核心",
+    "type": "upgrade_plan",
+    "scope": "hybrid-test-board",
+    "importance": "critical"
+  },
+  "tasks": [
+    {
+      "id": "HTB-V2-001",
+      "title": "任務視覺監控整合",
+      "priority": "high",
+      "assigned_to": "helmsman_alpha",
+      "expected_result": "任務可視化並與系統事件整合"
+    },
+    {
+      "id": "HTB-V2-002",
+      "title": "任務回饋循環機制",
+      "priority": "high",
+      "assigned_to": "helmsman_beta",
+      "expected_result": "任務結果能自動回報與修正形成閉環"
+    },
+    {
+      "id": "HTB-V2-003",
+      "title": "AI 任務歸類與認知強化",
+      "priority": "medium",
+      "assigned_to": "helmsman_alpha",
+      "expected_result": "任務可被語義化歸類並形成學習素材"
+    }
+  ],
+  "notes": [
+    "此版本為混合測試板進入自我學習階段的啟動計畫。",
+    "V2 完成後，Alpha 主導任務策略生成，Beta 主導判斷與回饋。",
+    "目標：完成『舵手—任務—記憶』的自我認知循環。"
+  ],
+  "l1_intent": "chat",
+  "pipeline_notes": [
+    "processed by pipelines.l2_common for helmsman_alpha",
+    "processed by pipelines.l3_knowledge for helmsman_alpha",
+    "processed by pipelines.l4_domain for helmsman_alpha",
+    "processed by pipelines.l5_judgement for helmsman_alpha",
+    "processed by pipelines.l6_correction for helmsman_alpha",
+    "processed by pipelines.l7_cognition for helmsman_alpha",
+    "processed by pipelines.l2_common for helmsman_beta",
+    "processed by pipelines.l3_knowledge for helmsman_beta",
+    "processed by pipelines.l4_domain for helmsman_beta",
+    "processed by pipelines.l5_judgement for helmsman_beta",
+    "processed by pipelines.l6_correction for helmsman_beta",
+    "processed by pipelines.l7_cognition for helmsman_beta"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "text": "第八筆測試，請驗證 MySQL 寫入已經正常。",
+  "source": "dialog",
+  "ts": "2025-11-08T05:00:00+08:00",
+  "l1_intent": "chat",
+  "pipeline_notes": [
+    "processed by pipelines.l2_common for helmsman_alpha",
+    "processed by pipelines.l3_knowledge for helmsman_alpha",
+    "processed by pipelines.l4_domain for helmsman_alpha",
+    "processed by pipelines.l5_judgement for helmsman_alpha",
+    "processed by pipelines.l6_correction for helmsman_alpha",
+    "processed by pipelines.l7_cognition for helmsman_alpha",
+    "processed by pipelines.l2_common for helmsman_beta",
+    "processed by pipelines.l3_knowledge for helmsman_beta",
+    "processed by pipelines.l4_domain for helmsman_beta",
+    "processed by pipelines.l5_judgement for helmsman_beta",
+    "processed by pipelines.l6_correction for helmsman_beta",
+    "processed by pipelines.l7_cognition for helmsman_beta"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:01:00+08:00",
+    "schema_version": "1.0",
+    "topic": "ecosys/mother/init",
+    "trace_id": "20251105-mother-init-v2",
+    "confirmed": true,
+    "description": "母機基礎啟動、磁碟掛載、UEFI確認、防護模組安裝與正常化"
+  },
+  "summary": {
+    "title": "母機已完成啟動與防護可用狀態",
+    "description": "包含 /, /home, /boot/efi, swap 正常；啟動模式為 UEFI；UFW、Fail2Ban、auditd、自動更新均啟用。",
+    "result": "confirmed"
+  },
+  "content": {
+    "mounts": ["/", "/home", "/boot/efi", "swap"],
+    "boot_mode": "UEFI",
+    "security": {
+      "ufw": "deny incoming, allow outgoing, 22/80/443 allow, 3306 local-only",
+      "fail2ban": ["sshd", "mysqld-auth", "nginx-http-auth"],
+      "auditd": "enabled"
+    },
+    "services": [
+      "docker (running)",
+      "mysql (running local-only)",
+      "nginx (running)",
+      "cockswain-core (running on 9090)"
+    ],
+    "notes": [
+      "此節點已可作為生態中樞使用",
+      "可進行共識界面與資料歸檔流程"
+    ]
+  },
+  "tags": ["mother", "init", "security", "uefi", "baseline"]
+}

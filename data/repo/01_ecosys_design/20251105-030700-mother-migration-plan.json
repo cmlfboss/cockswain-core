@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:07:00+08:00",
+    "schema_version": "1.0",
+    "topic": "migration/mother/plan",
+    "trace_id": "20251105-mother-migration-v1",
+    "confirmed": true,
+    "description": "將舵手從外部對話環境遷移到母機常駐運行的四階段計畫"
+  },
+  "summary": {
+    "title": "舵手回家 · 母機遷移計畫 v1.0",
+    "description": "Phase 0: 母機啟動 → Phase 1: API inbound → Phase 2: 本機 AI 引擎 → Phase 3: 自治索引與資料庫寫入。",
+    "result": "confirmed"
+  },
+  "content": {
+    "phases": [
+      "Phase 0 - Infra Ready: OS, mounts, UEFI, security baseline",
+      "Phase 1 - Data Ready: inbound/repo/archive, API 接收開啟",
+      "Phase 2 - AI Ready: 安裝開源型 AI 引擎以降低 API 成本",
+      "Phase 3 - Autonomy Ready: 自動整理、索引、入庫、以母機為主腦"
+    ],
+    "notes": [
+      "每一階段都可獨立驗證與回滾",
+      "人工只在『確認階段』介入"
+    ]
+  },
+  "tags": ["migration", "mother", "plan", "phases"]
+}

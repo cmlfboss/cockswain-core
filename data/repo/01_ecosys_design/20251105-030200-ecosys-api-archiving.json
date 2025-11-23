@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:02:00+08:00",
+    "schema_version": "1.0",
+    "topic": "ecosys/data/archiving",
+    "trace_id": "20251105-api-archiving-spec",
+    "confirmed": true,
+    "description": "舵手在對話界面確認後的資料要透過 API 進母機 inbound，然後再依生態資料佈置結構整理後入庫的規則"
+  },
+  "summary": {
+    "title": "舵手資料歸檔五段式流程確立",
+    "description": "1對話確認 → 2API投遞 → 3母機落地(inbound) → 4依佈置結構整理(repo) → 5延遲入庫。",
+    "result": "confirmed"
+  },
+  "content": {
+    "flow": [
+      "1. 舵手完成整理並貼於畫布（第一次確認）",
+      "2. 人說：歸檔",
+      "3. 舵手以統一JSON送至母機API",
+      "4. 母機存到 /srv/cockswain-core/data/inbound/",
+      "5. 背景腳本依 topic 移動到 repo，再進資料庫"
+    ],
+    "rules": {
+      "no_direct_db": true,
+      "must_have_meta": true,
+      "must_have_topic": true,
+      "must_have_trace_id": true
+    },
+    "cost_plan": {
+      "phase1": "API 一定開，但只做收檔",
+      "phase2": "裝本機開源引擎做整理降成本",
+      "phase3": "自治引擎讀 repo 入庫"
+    }
+  },
+  "tags": ["api", "archiving", "inbound", "normalize", "no-direct-db"]
+}

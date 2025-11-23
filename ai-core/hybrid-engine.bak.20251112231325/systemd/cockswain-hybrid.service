@@ -1,0 +1,17 @@
+[Unit]
+Description=Cockswain Hybrid Engine Core
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=cocksmain
+WorkingDirectory=/srv/cockswain-core/ai-core/hybrid-engine
+ExecStart=/usr/bin/python3 -m hybrid_engine.core.hybrid_core
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+PYTHONPATH=/srv/cockswain-core/ai-core/hybrid-engine
+
+[Install]
+WantedBy=multi-user.target

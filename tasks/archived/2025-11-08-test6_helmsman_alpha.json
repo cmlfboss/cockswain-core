@@ -1,0 +1,14 @@
+{
+  "text": "第六筆測試，請寫入DB做為混合測試版樣本。",
+  "source": "dialog",
+  "ts": "2025-11-08T04:40:00+08:00",
+  "l1_intent": "chat",
+  "pipeline_notes": [
+    "processed by pipelines.l2_common for helmsman_alpha",
+    "processed by pipelines.l3_knowledge for helmsman_alpha",
+    "processed by pipelines.l4_domain for helmsman_alpha",
+    "processed by pipelines.l5_judgement for helmsman_alpha",
+    "processed by pipelines.l6_correction for helmsman_alpha",
+    "processed by pipelines.l7_cognition for helmsman_alpha"
+  ]
+}

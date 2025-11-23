@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "dataset_code": "kc_recent_api_changes",
+    "name": "最近 API 變更紀錄",
+    "description": "從 kc_api_changes 擷取最近 N 筆變更，提供給知識處理中心做動態指向。",
+    "source_table": "kc_api_changes",
+    "generated_at": "2025-11-22T06:31:47.523898",
+    "row_count": 1
+  },
+  "rows": [
+    {
+      "id": 1,
+      "source_id": "meilisearch_local",
+      "prev_version": null,
+      "new_version": "1.11.0",
+      "change_type": "unknown",
+      "detected_at": 

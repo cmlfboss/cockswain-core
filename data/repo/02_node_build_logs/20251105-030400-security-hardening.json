@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:04:00+08:00",
+    "schema_version": "1.0",
+    "topic": "security/hardening",
+    "trace_id": "20251105-security-hardening-v1",
+    "confirmed": true,
+    "description": "母機使用 UFW + Fail2Ban + auditd + auto-update 所構成的漸進式防護策略"
+  },
+  "summary": {
+    "title": "母機防護策略（漸進式）",
+    "description": "保留必要服務的同時，用防火牆管入口，用 Fail2Ban 擋暴力，用 auditd 留痕，確保之後服務擴增也能受保護。",
+    "result": "confirmed"
+  },
+  "content": {
+    "principles": [
+      "最小開口原則",
+      "服務啟用即防護啟用",
+      "紀錄優先於阻擋",
+      "所有變更可審計"
+    ],
+    "ufw": {
+      "defaults": "deny incoming, allow outgoing",
+      "allow": ["22/tcp", "80/tcp", "443/tcp"],
+      "mysql": "127.0.0.1 only"
+    },
+    "fail2ban": {
+      "jails": ["sshd", "mysqld-auth", "nginx-http-auth"],
+      "bantime": "1h",
+      "findtime": "10m"
+    },
+    "auditd": {
+      "monitored": ["/var/lib/docker/", "/etc/nginx/", "/var/lib/mysql/"],
+      "purpose": "變更追蹤與入侵偵測"
+    }
+  },
+  "tags": ["security", "ufw", "fail2ban", "auditd", "hardening"]
+}

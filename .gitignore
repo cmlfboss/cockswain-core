@@ -1,0 +1,51 @@
+# ---- Python build / cache ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ---- 虛擬環境 ----
+venv/
+.venv/
+
+# ---- 環境變數 / 機密 ----
+.env
+.env.*
+!.env.example
+
+# ---- 日誌與暫存 ----
+logs/
+*/logs/
+tmp/
+*.log
+ai-core/tempstore/
+ai-core/tempstore.py
+
+# ---- 資料庫 & 索引資料 ----
+mysql/
+meili_data/
+meili_data_legacy_*/
+var/
+
+# ---- 備份與大型 dump ----
+backup/
+backup-*/
+backups/
+state/
+archive/
+
+# ---- 工作區 / 自動生成 ----
+ai-core/workspace/
+ai-core/auto_coder/
+ai-core/v3_autocode/
+ai-core/v3_core/
+ai-core/status/
+ai-core/health/
+ai-core/0
+ai-core/=
+ai-core/$OUT_FILE
+
+# ---- Docker / 其他 ----
+cd
+*.sqlite3
+

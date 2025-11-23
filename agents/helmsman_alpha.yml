@@ -1,0 +1,4 @@
+role: executor
+tone: strict
+knowledge_scope: engineering, infra, docker, ubuntu
+learning_mode: task-first

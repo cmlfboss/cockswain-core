@@ -1,0 +1,9 @@
+{
+  "created_at": "20251109-140253",
+  "host": "cocksmain-node-00",
+  "task_type": "system-repair",
+  "priority": "HIGH",
+  "status": "PENDING",
+  "source": "l5-decision",
+  "notes": ""
+}

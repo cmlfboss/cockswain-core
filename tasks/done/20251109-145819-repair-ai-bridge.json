@@ -1,0 +1,9 @@
+{
+  "created_at": "20251109-145819",
+  "task_type": "system-repair",
+  "service_name": "cockswain-ai-bridge.service",
+  "priority": "HIGH",
+  "status": "DONE",
+  "source": "l5-decision",
+  "retries": 2
+}

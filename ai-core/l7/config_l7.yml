@@ -1,0 +1,19 @@
+context_fusion:
+  enabled: true
+
+intent_goal:
+  global_goals:
+    - peaceful_coexistence
+    - mutual_help
+    - gradual_self_strengthening
+
+meta_judgment:
+  risk_threshold: 0.6
+
+orchestrator: {}
+
+self_reflection:
+  log_dir: /srv/cockswain-core/logs/reflection
+
+dao_gateway:
+  enabled: false

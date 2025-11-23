@@ -1,0 +1,9 @@
+{
+  "created_at": "20251109-144325",
+  "task_type": "system-repair",
+  "service_name": "cockswain-core",
+  "priority": "HIGH",
+  "status": "FAILED",
+  "source": "l5-decision",
+  "retries": 3
+}

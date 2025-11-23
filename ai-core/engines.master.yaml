@@ -1,0 +1,125 @@
+# /srv/cockswain-core/ai-core/engines.master.yaml
+version: "0.1.0"
+last_updated: "2025-11-10"
+description: "L7 Hybrid Engine Master List for cockswain-home"
+
+global_policy:
+  require_server_sig: true          # 全域都要母機簽章
+  default_timeout_ms: 120000
+  default_persistence: "conversation_end"
+  allowed_callers:
+    - "mother-node"
+    - "dao-gateway"
+    - "internal-orchestrator"
+
+engines:
+  - engine_id: "mother-core-llm"
+    engine_name: "Mother Node Core LLM"
+    role: "core"
+    enabled: true
+    entry:
+      protocol: "http"
+      endpoint: "http://127.0.0.1:7700/llm"    # 你之後換成真的服務
+      timeout_ms: 90000
+      auth:
+        mode: "none"
+    capabilities:
+      - domain: "dialogue"
+        intents: ["chat", "summarize", "classify"]
+        max_tokens: 4096
+    routing_policy:
+      priority: 10
+      load_balance: "round_robin"
+      fallback: []
+    security:
+      whitelist:
+        tasks: ["chat", "summarize", "classify"]
+        callers: ["mother-node", "internal-orchestrator"]
+      signatures:
+        require_server_sig: true
+        accept_pda_proxy: true
+      audit:
+        log_level: "basic"
+    persistence:
+      log_to_tempstore: true
+      flush_condition: "conversation_end"
+    healthcheck:
+      type: "http"
+      endpoint: "http://127.0.0.1:7700/health"
+      interval_sec: 30
+      retry: 3
+
+  - engine_id: "node-ai-01"
+    engine_name: "Node 01 Extension AI"
+    role: "extension"
+    enabled: false
+    entry:
+      protocol: "http"
+      endpoint: "http://192.168.1.50:7777/infer"
+      timeout_ms: 120000
+      auth:
+        mode: "none"
+    capabilities:
+      - domain: "code"
+        intents: ["generate_code", "explain_code"]
+      - domain: "dialogue"
+        intents: ["chat"]
+    routing_policy:
+      priority: 50
+      load_balance: "failover"
+      fallback:
+        - "mother-core-llm"
+    security:
+      whitelist:
+        tasks: ["chat", "generate_code", "explain_code"]
+        callers: ["mother-node", "dao-gateway"]
+      signatures:
+        require_server_sig: true
+        accept_pda_proxy: true
+      audit:
+        log_level: "basic"
+    persistence:
+      log_to_tempstore: true
+      flush_condition: "conversation_end"
+    healthcheck:
+      type: "http"
+      endpoint: "http://192.168.1.50:7777/health"
+      interval_sec: 30
+      retry: 2
+
+  - engine_id: "guest-remote-llm"
+    engine_name: "Guest LLM via Bridge"
+    role: "guest"
+    enabled: false          # 默認關掉，等你要外掛再開
+    entry:
+      protocol: "http"
+      endpoint: "http://127.0.0.1:8900/bridge"
+      timeout_ms: 150000
+      auth:
+        mode: "bearer"
+        token: "PUT-YOUR-BRIDGE-TOKEN-HERE"
+    capabilities:
+      - domain: "dialogue"
+        intents: ["chat"]
+    routing_policy:
+      priority: 90
+      load_balance: "round_robin"
+      fallback:
+        - "mother-core-llm"
+    security:
+      whitelist:
+        tasks: ["chat"]
+        callers: ["mother-node"]
+      signatures:
+        require_server_sig: true
+        accept_pda_proxy: false
+      audit:
+        log_level: "full"
+    persistence:
+      log_to_tempstore: true
+      flush_condition: "conversation_end"
+    healthcheck:
+      type: "http"
+      endpoint: "http://127.0.0.1:8900/health"
+      interval_sec: 60
+      retry: 1

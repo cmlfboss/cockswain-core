@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  cockswain-helm-main:
+    image: alpine:3.19
+    container_name: cockswain-helm-main
+    command: ["sh", "-c", "while true; do sleep 60; done"]
+    restart: unless-stopped
+    networks:
+      - cockswain-net
+
+  cockswain-helm-sandbox:
+    image: alpine:3.19
+    container_name: cockswain-helm-sandbox
+    command: ["sh", "-c", "while true; do sleep 60; done"]
+    restart: unless-stopped
+    networks:
+      - cockswain-net
+
+networks:
+  cockswain-net:
+    external: true

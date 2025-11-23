@@ -1,0 +1,17 @@
+[Unit]
+Description=Cockswain Bridge Service
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=cocksmain
+WorkingDirectory=/srv/cockswain-core/ai-core/hybrid-engine
+ExecStart=/usr/bin/python3 -m hybrid_engine.bridge.bridge_service
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+PYTHONPATH=/srv/cockswain-core/ai-core/hybrid-engine
+
+[Install]
+WantedBy=multi-user.target

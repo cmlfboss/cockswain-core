@@ -1,0 +1,9 @@
+sources:
+  - id: cockswain_specs
+    enabled: true
+    type: "file"                    # file | http | git | other
+    path: "/srv/cockswain-core/docs/specs"
+    freq: "daily"                   # hourly | daily | weekly | manual
+    domain: "ai-core"
+    format: "auto"                  # auto | markdown | text | json
+    tags: ["internal", "design", "spec"]

@@ -1,0 +1,16 @@
+[Unit]
+Description=Cockswain Core Bridge Service (L3-L7)
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=cocksmain
+WorkingDirectory=/srv/cockswain-core/ai-core
+ExecStart=/usr/bin/python3 /srv/cockswain-core/ai-core/core_bridge.py
+Restart=on-failure
+RestartSec=3
+StandardOutput=append:/srv/cockswain-core/logs/core_bridge.out
+StandardError=append:/srv/cockswain-core/logs/core_bridge.err
+
+[Install]
+WantedBy=multi-user.target

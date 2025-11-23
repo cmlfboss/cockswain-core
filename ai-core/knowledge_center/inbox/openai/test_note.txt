@@ -1,0 +1,1 @@
+幫我掃描 /srv/cockswain-core/logs 底下所有 .log，找到 ERROR 這個字的行全部印出來

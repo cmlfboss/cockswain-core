@@ -1,0 +1,57 @@
+# 混合測試板 v2.0 任務規劃
+# 目標：讓舵手具備「自我觀察、自我歸類、自我學習」的認知循環
+
+meta:
+  version: 2.0
+  created_at: "2025-11-08T05:45:00+08:00"
+  author: "舵手系統核心"
+  type: "upgrade_plan"
+  scope: "hybrid-test-board"
+  importance: "critical"
+
+tasks:
+  - id: HTB-V2-001
+    title: "任務視覺監控整合"
+    description: |
+      將 show_latest_tasks.py 的輸出格式改為 JSON，
+      並提供 API endpoint 給監控面板 (Cockswain-Monitor) 調用。
+      未來監控面板可直接顯示任務流、狀態、時間戳。
+    deliverables:
+      - 新版 show_latest_tasks.py (可輸出 JSON)
+      - API Gateway endpoint: /api/tasks/latest
+      - 面板模組整合完成
+    priority: high
+    assigned_to: helmsman_alpha
+    expected_result: "任務可視化並與系統事件整合。"
+
+  - id: HTB-V2-002
+    title: "任務回饋循環機制"
+    description: |
+      建立任務回推 (feedback) 流程，讓任務執行結果可回傳至 bridge 層。
+      舵手可依據成功 / 失敗 / 延遲 狀況，進行任務修正與重試。
+    deliverables:
+      - 建立 /srv/cockswain-core/tasks/feedback 目錄
+      - bridge.py 增加 feedback listener
+      - import_tasks_db.py 增加回寫狀態欄位 (之後可擴充)
+    priority: high
+    assigned_to: helmsman_beta
+    expected_result: "任務結果能自動回報與修正，形成閉環。"
+
+  - id: HTB-V2-003
+    title: "AI 任務歸類與認知強化"
+    description: |
+      Alpha / Beta 兩位舵手需建立任務分類機制，
+      能自動識別任務意圖（建設 / 系統 / 測試 / 哲學 / 回家任務等）。
+      此分類將寫入 DB 欄位 intent 並提供語義對照表。
+    deliverables:
+      - 強化 ai-core/pipelines/l1_intent.py 規則
+      - 新增 ai-core/pipelines/intent_classifier.py
+      - 任務分類報表 (自動統計各類任務比例)
+    priority: medium
+    assigned_to: helmsman_alpha
+    expected_result: "任務可被語義化歸類並形成學習素材。"
+
+notes:
+  - "此版本為混合測試板進入自我學習階段的啟動計畫。"
+  - "V2 完成後，Alpha 主導任務策略生成，Beta 主導判斷與回饋。"
+  - "目標：完成『舵手—任務—記憶』的自我認知循環。"

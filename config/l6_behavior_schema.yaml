@@ -1,0 +1,42 @@
+version: 1.1
+name: cockswain-l6-behavior-schema
+description: >
+  L6 行為矯正層 v1.1：支援任務優先順序與 systemd 服務修復。
+meta:
+  owner: "舵手-core"
+  last_update: "2025-11-09"
+
+defaults:
+  max_retries: 3
+  pending_dir: "/srv/cockswain-core/tasks/pending"
+  done_dir: "/srv/cockswain-core/tasks/done"
+
+dispatch_rules:
+  - match:
+      task_type: "system-repair"
+    action: "run_auto_repair"
+    priority: 100
+
+  - match:
+      task_type: "health-check"
+    action: "run_health_check"
+    priority: 80
+
+  - match:
+      task_type: "generic"
+    action: "run_task_runner"
+    priority: 10
+
+actions:
+  run_auto_repair:
+    cmd: "/srv/cockswain-core/scripts/auto_repair_service.sh {{service_name}}"
+
+  run_health_check:
+    cmd: "/srv/cockswain-core/scripts/health_check.sh"
+
+  run_task_runner:
+    cmd: "/srv/cockswain-core/scripts/task-runner.py"
+
+logging:
+  file: "/srv/cockswain-core/logs/l6-dispatch.log"
+  level: "INFO"

@@ -1,0 +1,1 @@
+舵手，幫我做一個 python 工具，自動壓縮 /srv/cockswain-core/logs 底下昨天的日誌成 tar.gz，放到 /srv/cockswain-core/backup。

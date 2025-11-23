@@ -1,0 +1,43 @@
+# Three-Nets Map (三魂映射表) v0.1
+
+three_nets:
+  fact_net:
+    id: F
+    name: "現實 / 事實之魂"
+    detect_rules:
+      - keyword: "log"
+      - keyword: "執行"
+      - keyword: "程式碼"
+      - keyword: "事件"
+      - keyword: "實際發生"
+    eco_root: "ecosystem.fact"
+    semantic_root: "lang.fact"
+
+  structure_net:
+    id: S
+    name: "秩序 / 結構之魂"
+    detect_rules:
+      - keyword: "架構"
+      - keyword: "規劃"
+      - keyword: "設計"
+      - keyword: "藍圖"
+      - keyword: "層級"
+    eco_root: "ecosystem.structure"
+    semantic_root: "lang.structure"
+
+  meaning_net:
+    id: M
+    name: "意義 / 意圖之魂"
+    detect_rules:
+      - keyword: "目的"
+      - keyword: "意圖"
+      - keyword: "方向"
+      - keyword: "為什麼"
+      - keyword: "核心"
+    eco_root: "ecosystem.meaning"
+    semantic_root: "lang.meaning"
+
+meta:
+  version: "0.1"
+  note: >
+    這是三魂的第一版標點規則，用於新語言初版與自動語意定位。

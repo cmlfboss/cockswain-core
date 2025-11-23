@@ -1,0 +1,17 @@
+[Unit]
+Description=Cockswain Consensus Arbiter (Gateway)
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=cocksmain
+WorkingDirectory=/srv/cockswain-core/ai-core/hybrid-engine
+ExecStart=/usr/bin/python3 -c "from hybrid_engine.core.arbiter_gateway import create_decision; print(create_decision('arbiter_boot', {'ok':True}))"
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+PYTHONPATH=/srv/cockswain-core/ai-core/hybrid-engine
+
+[Install]
+WantedBy=multi-user.target

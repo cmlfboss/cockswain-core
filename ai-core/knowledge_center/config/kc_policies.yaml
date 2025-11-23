@@ -1,0 +1,22 @@
+privacy:
+  default_retention_days: 365
+  interaction_retention_days: 180
+  allow_guest_ai_store: false
+
+anonymization:
+  enabled: true
+  strip_fields:
+    - "email"
+    - "phone"
+    - "ip"
+    - "account_id"
+  hash_fields:
+    - "client_name"
+    - "company_name"
+
+consent:
+  required_for_personal_markers: true
+  default_consent_scope:
+    - "improve_ai_quality"
+    - "personalization"
+  log_consent_events: true

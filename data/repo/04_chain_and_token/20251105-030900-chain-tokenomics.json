@@ -1,0 +1,29 @@
+{
+  "meta": {
+    "source": "openai-interface",
+    "sender": "cocksmain",
+    "received_at": "2025-11-05T03:09:00+08:00",
+    "schema_version": "1.0",
+    "topic": "chain/tokenomics",
+    "trace_id": "20251105-chain-tokenomics-v1",
+    "confirmed": true,
+    "description": "預留給未來雙幣、公鏈、治理與母機自治策略對接的資料"
+  },
+  "summary": {
+    "title": "CMLF / 雙幣架構（預留）",
+    "description": "治理幣用於決策與分潤，流通幣用於日常激勵，兩者的策略與白名單都交給母機管理。",
+    "result": "confirmed"
+  },
+  "content": {
+    "dual_token": {
+      "governance_token": "決策、分潤、治理",
+      "utility_token": "節點激勵、遊戲、公會、日常流通"
+    },
+    "onchain_policy": {
+      "whitelist": "由母機控制的地址/節點白名單",
+      "fee": "可由舵手策略性調整費率",
+      "registry": "母機作為中樞記錄所有策略版本"
+    }
+  },
+  "tags": ["chain", "tokenomics", "governance", "cmlf", "reserve"]
+}

@@ -1,0 +1,43 @@
+# /srv/cockswain-core/ai-core/engine.template.yaml
+engine_id: "REPLACE_ME"
+engine_name: "REPLACE_ME"
+role: "extension"     # core | extension | guest
+enabled: true
+
+entry:
+  protocol: "http"    # http | grpc | local
+  endpoint: "http://REPLACE_ME:7777/infer"
+  timeout_ms: 120000
+  auth:
+    mode: "none"      # none | bearer | signed
+    token: ""
+
+capabilities:
+  - domain: "dialogue"
+    intents: ["chat"]
+    max_tokens: 4096
+
+routing_policy:
+  priority: 50
+  load_balance: "round_robin"
+  fallback: ["mother-core-llm"]
+
+security:
+  whitelist:
+    tasks: ["chat"]
+    callers: ["mother-node"]
+  signatures:
+    require_server_sig: true
+    accept_pda_proxy: true
+  audit:
+    log_level: "basic"
+
+persistence:
+  log_to_tempstore: true
+  flush_condition: "conversation_end"
+
+healthcheck:
+  type: "http"
+  endpoint: "http://REPLACE_ME:7777/health"
+  interval_sec: 30
+  retry: 3

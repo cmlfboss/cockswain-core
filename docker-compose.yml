@@ -1,0 +1,68 @@
+version: "3.9"
+
+services:
+  # ==========================================
+  #  1. Cockswain Core Engine（AI 主核心）
+  # ==========================================
+  cockswain-core:
+    image: python:3.12-slim
+    container_name: cockswain-core
+    restart: unless-stopped
+    working_dir: /app
+    env_file:
+      - .env
+    volumes:
+      - ./agents:/app/agents
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./configs:/app/configs
+
+  # ===============================
+  #  2. Meilisearch 搜尋引擎
+  # ===============================
+  meilisearch:
+    image: getmeili/meilisearch:v1.11.0
+    container_name: cockswain-meilisearch
+    restart: unless-stopped
+    ports:
+      - "7700:7700"
+    volumes:
+      - ./meili_data:/meili_data
+    env_file:
+      - .env
+    environment:
+      MEILI_ENV: "production"
+      MEILI_DB_PATH: "/meili_data"
+      # 若 .env 裡有 MEILI_MASTER_KEY，這裡就會吃到同一組
+
+  # ===============================
+  #  3. Helm Sandbox（保留，你原本的）
+  # ===============================
+  cockswain-helm-sandbox:
+    image: python:3.12-slim
+    container_name: cockswain-helm-sandbox
+    restart: unless-stopped
+    working_dir: /app
+    env_file:
+      - .env
+    volumes:
+      - ./agents:/app/agents
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./configs:/app/configs
+
+  # ===============================
+  #  4. Helm Main（保留，你原本的）
+  # ===============================
+  cockswain-helm-main:
+    image: python:3.12-slim
+    container_name: cockswain-helm-main
+    restart: unless-stopped
+    working_dir: /app
+    env_file:
+      - .env
+    volumes:
+      - ./agents:/app/agents
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./configs:/app/configs

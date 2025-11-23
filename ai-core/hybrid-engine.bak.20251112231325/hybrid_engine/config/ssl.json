@@ -1,0 +1,7 @@
+{
+  "enable": true,
+  "cert_file": "",
+  "key_file": "",
+  "check_hostname": false,
+  "verify_mode": "CERT_NONE"
+}

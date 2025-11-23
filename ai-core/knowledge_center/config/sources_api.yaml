@@ -1,0 +1,12 @@
+sources:
+  - id: meilisearch_local
+    enabled: true
+    type: "http_json"
+    base_url: "http://127.0.0.1:7700"
+    version_path: "/version"
+    freq: "weekly"
+    domain: "search"
+    track:
+      - "version"
+    api_key_env: "MEILI_MASTER_KEY"
+    tags: ["internal", "infra"]

@@ -1,0 +1,17 @@
+[Unit]
+Description=Cockswain L5 Reflect Service
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=cocksmain
+WorkingDirectory=/srv/cockswain-core/ai-core/hybrid-engine
+ExecStart=/usr/bin/python3 -c "from hybrid_engine.reflect.l5_reflect_core import reflect; print(reflect({'boot':'ok'}))"
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+PYTHONPATH=/srv/cockswain-core/ai-core/hybrid-engine
+
+[Install]
+WantedBy=multi-user.target

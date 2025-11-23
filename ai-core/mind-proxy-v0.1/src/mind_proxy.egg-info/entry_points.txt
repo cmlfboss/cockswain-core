@@ -1,0 +1,2 @@
+[console_scripts]
+mind-proxy = mind_proxy.__main__:main
